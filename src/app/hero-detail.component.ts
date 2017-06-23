@@ -8,7 +8,7 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrl: ['./hero-detail.component.css']
+  styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
@@ -28,5 +28,10 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   };
+
+  save(): void {
+    this.heroService.update(this.hero)
+      .then(() => this.goBack());
+  }
 
 }
